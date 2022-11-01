@@ -71,6 +71,10 @@ class Counter extends Component {
       (<p>{this.renderTags()}</p>),
       (
         <div>
+          {/* Die props.children aufrufen */}
+          {/* {this.props.children} */}
+          {/* oder wir können anstatt props.children einfach this.props.id wie oben für value (this.props.value) verwenden. */}
+          <h4>Id: #{this.props.id}</h4>
           <span className={this.getBadgeClasses()}>{this.format()}</span>
           <button
             onClick={this.doHandleIncrement}
