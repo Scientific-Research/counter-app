@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 class Counter extends Component {
   state = {
-    count: 0,
+    value: this.props.value,
+    //count: 0,
+
     tags: ["tag1", "tag2", "tag3", "tags4", "tag5", "tag6"],
     // tags: [],
   };
@@ -21,11 +23,11 @@ class Counter extends Component {
 
   // Zweite Lösung zum Zugriff .this Ohne Konstruktor zu nutzen ist: Die Verwendung eine Arrow function(Pfeil Funktion)
   handleIncrement = (nameVonProdukt) => {
-    let result = this.state.count++;
+    let result = this.state.value++;
     console.log("Increment Clicked!", result);
     console.log("Name des Produkts: " + nameVonProdukt);
 
-    this.setState({ count: this.state.count++ });
+    this.setState({ value: this.state.value++ });
     // console.log(this.state.tags);
     // return result;
   };
@@ -39,7 +41,7 @@ class Counter extends Component {
   };
 
   renderTags() {
-    console.log(this.state.tags.length);
+    // console.log(this.state.tags.length);
     // Ternary Operators
     // return this.state.tags.length === 0 ? (
     //   <p>"There are no tags"</p>
@@ -60,6 +62,7 @@ class Counter extends Component {
     );
   }
   render() {
+    console.log("props", this.props);
     return (
       // <div>
       //   {this.state.tags.length === 0 && "There are no Tags"}
@@ -82,11 +85,11 @@ class Counter extends Component {
 
   getBadgeClasses() {
     let classes = "badge m-2 bg-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+    classes += this.state.value === 0 ? "warning" : "primary";
     return classes;
   }
   format() {
-    const { count } = this.state;
+    const { value: count } = this.state;
     return count === 0 ? "Zero" : count;
   }
 }
