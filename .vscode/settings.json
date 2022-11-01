@@ -1,0 +1,8 @@
+{
+  "git.ignoreLimitWarning": true,
+  "workbench.colorTheme": "Ayu Dark",
+  "workbench.iconTheme": "vs-seti",
+  "workbench.colorCustomizations": {
+    "[Ayu Mirage]": {}
+  }
+}
