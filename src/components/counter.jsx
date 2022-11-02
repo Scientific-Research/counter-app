@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+// import "../App.css";
+
 class Counter extends Component {
   state = {
     value: this.props.value,
@@ -27,6 +29,8 @@ class Counter extends Component {
     console.log("Increment Clicked!", result);
     console.log("Name des Produkts: " + nameVonProdukt);
 
+    /* Das ist nicht erlaubt, weil props ist Read-Only */
+    // this.props.value = 0;
     this.setState({ value: this.state.value++ });
     // console.log(this.state.tags);
     // return result;
@@ -39,6 +43,12 @@ class Counter extends Component {
     };
     this.handleIncrement(a.name);
   };
+
+  // doHandleDelete = (counter) => {
+  //   const values = this.state.counters.filter((c) => c._id !== counter.id);
+  //   this.setState({ values });
+  //   console.log(values);
+  // };
 
   renderTags() {
     // console.log(this.state.tags.length);
@@ -76,11 +86,21 @@ class Counter extends Component {
           {/* oder wir können anstatt props.children einfach this.props.id wie oben für value (this.props.value) verwenden. */}
           <h4>Id: #{this.props.id}</h4>
           <span className={this.getBadgeClasses()}>{this.format()}</span>
+
+          {/* Increment Button */}
           <button
             onClick={this.doHandleIncrement}
             className="btn btn-secondary btn-sm"
           >
             Increment
+          </button>
+
+          {/* Delete Button */}
+          <button
+            onClick={() => this.props.onDelete(this.props.id)}
+            className="btn btn-danger btn-sm m-3"
+          >
+            Delete
           </button>
         </div>
       )

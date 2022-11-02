@@ -11,6 +11,22 @@ class Counters extends Component {
     ],
   };
 
+  // doHandleDelete = (counter) => {
+  //   const values = this.state.counters.filter((c) => c._id !== counter.id);
+  //   this.setState({ values });
+  //   console.log(values);
+  // };
+
+  handleDelete = (counterId) => {
+    // wir können nicht das Originale Array ändern, deswegen machen wie ein neues Array. Dieses Array heißt counters.
+    const counters = this.state.counters.filter((c) => c.id !== counterId);
+    // this.setState({ counters: counters });
+    // oder in einer einfachen Form: ohne zweite counters
+    this.setState({ counters });
+    console.log(counterId);
+    // this.handleDelete(this.counter);
+    console.log("EventHandler hat begonen!");
+  };
   render() {
     // mein Statement
     return (
@@ -21,6 +37,7 @@ class Counters extends Component {
             value={counter.value}
             selected={true}
             id={counter.id}
+            onDelete={this.handleDelete}
           >
             {/* Props Children */}
             {/* <h4>Counter #{counter.id}</h4> */}
